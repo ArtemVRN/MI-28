@@ -31,7 +31,6 @@ bool generate_map()
 			heighmap[i] = heighmap[i - 1];
 			enemies[i].type = (Enemy::Type)(rand() % 4 + 1);
 			//enemies[i]
-			//pravka lol
 		}
 		//int strong
 	}
