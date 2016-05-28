@@ -1,0 +1,3 @@
+land_detalization 4
+enemies 10
+maplen 1000

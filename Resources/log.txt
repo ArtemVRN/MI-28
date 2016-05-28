@@ -1,0 +1,10 @@
+Game successfully started. Initializing...
+~ window made
+~ settings loaded
+~ initialization finished
+
+Game Cycling...
+* Key 27 pressed. Exiting
+
+Finishing..
+The End.
