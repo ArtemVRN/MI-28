@@ -9,10 +9,12 @@ extern Player player;
 
 struct Enemy {
 	enum Type{
-		EMPTY = 0, INFANTRY, TANK, BUILDING, SHIP, BOAT
+		EMPTY = 0, INFANTRY, TANK, BUILDING//, SHIP, BOAT
 	} type = EMPTY;
 	int x;
+	Enemy* next;
 };
+extern int enemyCount;
 
 extern Enemy* enemies;
 extern int* heighmap;	// each mapheight strongly per 40px

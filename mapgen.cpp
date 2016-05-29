@@ -11,7 +11,8 @@ bool generate_map()
 	int enem = settings->enemies;
 
 	heighmap = new int[len+80];
-	enemies = new Enemy[len];
+	enemies = new Enemy;
+	Enemy* curen = enemies;
 
 	// secutity   
 	if (start <= 0) {
@@ -27,11 +28,19 @@ bool generate_map()
 	for (int i = 80; i < len+80; i += 4 / det) {
 		
 		char enemy = ((rand() % 101) + 1) < enem; // is enemy
-		if (enem) {
+		if (enemy) {
 			heighmap[i] = heighmap[i - 1];
-			enemies[i].type = (Enemy::Type)(rand() % 4 + 1);
-			//enemies[i]
+			curen->type = (Enemy::Type)(rand() % 4 + 1);
+			curen->x = i;
+			curen = curen->next = new Enemy;
 		}
-		//int strong
+		else {
+			for (int j = 0; j < 4 / det; i++, j++) 
+				heighmap[i] = heighmap[i - 1] + direction*((rand() % 2) + 1);
+				
+			direction -= 2 * direction;
+		}
 	}
+
+	return false;
 }

@@ -8,10 +8,24 @@ void(*state)();
 
 bool FrameFunc() {
 	
-	int key;
-	if (key = hge->Input_GetKey()) {
+	static float x = 40, y = 90;
+	int key = hge->Input_GetKey();
 
-		hge->System_Log("* Key %d pressed. Exiting", key);
+	switch (key) {
+	case HGEK_UP:
+		y++;
+		break;
+	case HGEK_DOWN:
+		y--;
+		break;
+	case HGEK_RIGHT:
+		x++;
+		break;
+	case HGEK_LEFT:
+		x--;
+		break;
+	case HGEK_ESCAPE:
+		hge->System_Log("* Escape pressed. Exiting");
 		return true;
 	}
 
