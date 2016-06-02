@@ -1,6 +1,7 @@
 
 #include "hge_interface.h"
 #include "timer.h"
+#include "global.h"
 
 /* State is function, what program should do this time */
 void(*state)();
@@ -8,7 +9,6 @@ void(*state)();
 
 bool FrameFunc() {
 	
-	static float x = 40, y = 90;
 	int key = hge->Input_GetKey();
 
 	switch (key) {
@@ -28,6 +28,8 @@ bool FrameFunc() {
 		hge->System_Log("* Escape pressed. Exiting");
 		return true;
 	}
+
+
 
 	return false;
 }

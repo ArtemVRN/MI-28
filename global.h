@@ -14,8 +14,10 @@ struct Enemy {
 	int x;
 	Enemy* next;
 };
-extern int enemyCount;
+extern int enemyCount; // number of enemies
 
-extern Enemy* enemies;
+extern Enemy* enemies; // list of enemies
 extern int* heighmap;	// each mapheight strongly per 40px
-extern Settings* settings;
+extern Settings* settings; // global settings
+
+extern unsigned x, y; // camera
