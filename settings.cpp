@@ -13,7 +13,7 @@ Settings * load_settings(const char * file_name)
 		return 0;
 
 	Settings* ret = new Settings;
-	char buf[32];
+	char buf[64];
 
 	do
 	{ 
@@ -21,7 +21,7 @@ Settings * load_settings(const char * file_name)
 		for (int i = 0; c = getc(file), buf[i] = isalpha(c) ? c : '\0'; i++)
 			;
 
-		if (!strcmp(buf, "land_detalization")) {
+		if (!strcmp(buf, "landdetalization")) {
 			fscanf(file, "%d", &ret->land_detalization);
 		}
 		else if (!strcmp(buf, "enemies")) {

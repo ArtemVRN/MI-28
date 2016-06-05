@@ -14,22 +14,24 @@ bool FrameFunc() {
 	switch (key) {
 	case HGEK_UP:
 		y++;
+		//hge->System_Log("~ key pressed: y = %u", y);
 		break;
 	case HGEK_DOWN:
 		y--;
+		//hge->System_Log("~ key pressed: y = %u", y);
 		break;
 	case HGEK_RIGHT:
-		x++;
+		x+= 4/settings->land_detalization;
+		//hge->System_Log("~ key pressed: x = %u", x);
 		break;
 	case HGEK_LEFT:
-		x--;
+		x-= 4 / settings->land_detalization;
+		//hge->System_Log("~ key pressed: x = %u", x);
 		break;
 	case HGEK_ESCAPE:
-		hge->System_Log("* Escape pressed. Exiting");
+		hge->System_Log("* escape pressed. Exiting");
 		return true;
 	}
-
-
 
 	return false;
 }

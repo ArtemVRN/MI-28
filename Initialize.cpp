@@ -27,7 +27,7 @@ bool Initialize() {
 
 	hge->System_Log("~ creating map");
 	if (!generate_map()) {
-		hge->System_Log("~ map was successfully generated");
+//		hge->System_Log("~ map was successfully generated");
 	}
 	else {
 		hge->System_Log("!! map was not generated. Can not continue initialization");

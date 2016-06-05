@@ -24,7 +24,7 @@ bool generate_map()
 		heighmap[i] = start;
 	}
 
-	char direction = 1;	// 1 - up; -1 - down
+	int direction = 1;	// 1 - up; -1 - down
 	for (int i = 80; i < len+80; i += 4 / det) {
 		
 		char enemy = ((rand() % 101) + 1) < enem; // is enemy
@@ -35,8 +35,8 @@ bool generate_map()
 			curen = curen->next = new Enemy;
 		}
 		else {
-			for (int j = 0; j < 4 / det; i++, j++) 
-				heighmap[i] = heighmap[i - 1] + direction*((rand() % 2) + 1);
+			for (int j = 0; j < det; /*i++,*/ j++) 
+				heighmap[i+j] = heighmap[i + j - 1] + direction*((rand() % 2) + 1);
 				
 			direction -= 2 * direction;
 		}

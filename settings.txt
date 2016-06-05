@@ -1,0 +1,4 @@
+land_detalization 4
+enemies 0
+maplen 1000
+startheight 100
