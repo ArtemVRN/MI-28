@@ -12,16 +12,16 @@ bool RenderFunc() {
 	int det = settings->land_detalization;
 	int* map = heighmap; // for shortness
 
-	for (int i = 0; i < 80; i += (4 / det))
+	for (int i = 0; i < 80 * det / 4; i++)
 	/* i is 'x' position on screen, where we draw next 4v */
 	{
 
 		static hgeSprite s(0, 0, 0, 0, 0);
 
-		s.Render4V(float(i * 10), float(600 - map[x + i] * 10 + y*10),
-			float(i * 10 + 10), float(600 - map[x + i + 1] * 10 + y*10),
-			float(i * 10 + 10), 600.0f,
-			float(i * 10), 600.0f);
+		s.Render4V(float(i * 40 / det), float(600 - map[x + i * 4 / det] * 10 + y * 10),
+			float(i * 40 / det + 40 / det), float(600 - map[x + i * 4 / det + 4/det] * 10 + y * 10),
+			float(i * 40 / det + 40 / det), 600.0f,
+			float(i * 40 / det), 600.0f);
 
 	}
 
