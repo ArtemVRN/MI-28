@@ -10,20 +10,21 @@ bool RenderFunc() {
 	hge->Gfx_Clear(0xB0E5FA);
 
 	int det = settings->land_detalization;
+	int* map = heighmap; // for shortness
 
-	/*hgeQuad* q = new hgeQuad;
-	//q->blend = 0;
-	q->tex = 0;*/
-	for (int i = 0; i < 80; i+=4/settings->land_detalization) {
-		
-		hgeSprite s(0, 0, 0, 0, 0);
+	for (int i = 0; i < 80 * det / 4; i++)
+	/* i is 'x' position on screen, where we draw next 4v */
+	{
 
-		s.Render4V(i * 10 * 4 / det, 600 - heighmap[i+x] * 10 * 4 / det + y*10 * 4 / det,
-			i * 10 * 4 / det + 10 * 4 / det, 600 - heighmap[i + 1 + x] * 10 * 4 / det + y*10,
-			i * 10 * 4 / det + 10 * 4 / det, 600,
-			i * 10 * 4 / det, 600);
+		static hgeSprite s(0, 0, 0, 0, 0);
+
+		s.Render4V(float(i * 40 / det), float(600 - map[x + i * 4 / det] * 10 + y * 10),
+			float(i * 40 / det + 40 / det), float(600 - map[x + i * 4 / det + 4/det] * 10 + y * 10),
+			float(i * 40 / det + 40 / det), 600.0f,
+			float(i * 40 / det), 600.0f);
 
 	}
+
 
 	/* 0xFED448 - ground color */
 
