@@ -1,10 +1,14 @@
 #include "mapgen.h"
 
 #include "hge_interface.h"
+#include <ctime>
 
 /* Returns true if map was generated successfully */
 bool generate_map()
 {
+	// randomize
+	srand(time(NULL));
+
 	int len = settings->maplen; len += len % 4; // we should have len = 4*n
 	int det = settings->land_detalization;
 	int start = settings->startheight;
