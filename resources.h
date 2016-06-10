@@ -4,12 +4,20 @@
 
 
 struct Resources {
-	HTEXTURE helly, infantry, inf_w, tank, tank_w,
-		aa, aa_w, car, car_w, build1, build2, boat, boat_w,
-		ship, ship_w;
+	struct Sprites{
+		hgeSprite *helly, *infantry, *inf_w, *tank, *tank_w,
+			*aa, *aa_w, *car, *car_w, *build1, *build2, *boat, *boat_w,
+			*ship, *ship_w, *ground;
+	} sprites;
 	
-	HMUSIC theme;
-	HEFFECT explosion, pif, shot_in, ag_rocket, aa_rocket;
+	struct Music{
+		HMUSIC *theme;
+	} music;
+
+	struct Effects{
+		HEFFECT *explosion, *pif, *shot_in, *ag_rocket, *aa_rocket;
+	}effects;
 };
 
-extern Resources res;
+
+bool load_res();
