@@ -1,9 +1,11 @@
 #pragma once
 
 #include "settings.h"
+#include "resources.h"
 
 struct Player {
-	int x, height, patrons, hp;
+	float x, height, hp;
+	int patrons, casset;
 };
 extern Player player;
 
@@ -20,4 +22,4 @@ extern Enemy* enemies; // list of enemies
 extern int* heighmap;	// each mapheight strongly per 40px
 extern Settings* settings; // global settings
 
-extern unsigned x, y; // camera
+extern Resources res;
