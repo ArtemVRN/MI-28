@@ -6,32 +6,31 @@
 /* State is function, what program should do this time */
 void(*state)();
 
+#define PRESSED(key) if (hge ## ->Input_GetKeyState(key))
 
 bool FrameFunc() {
 	
-	int key = hge->Input_GetKey();
-
-	switch (key) {
-	case HGEK_UP:
-		y++;
-		//hge->System_Log("~ key pressed: y = %u", y);
-		break;
-	case HGEK_DOWN:
-		y--;
-		//hge->System_Log("~ key pressed: y = %u", y);
-		break;
-	case HGEK_RIGHT:
-		x+= 4/settings->land_detalization;
-		//hge->System_Log("~ key pressed: x = %u", x);
-		break;
-	case HGEK_LEFT:
-		x-= 4 / settings->land_detalization;
-		//hge->System_Log("~ key pressed: x = %u", x);
-		break;
-	case HGEK_ESCAPE:
-		hge->System_Log("* escape pressed. Exiting");
-		return true;
+	PRESSED(HGEK_W) {
+		player.height += hge->Timer_GetDelta() * 5;
 	}
+	//hge->System_Log("~ key pressed: y = %u", y);
+
+	PRESSED(HGEK_S) {
+		player.height -= hge->Timer_GetDelta() * 5;
+	}
+	//hge->System_Log("~ key pressed: y = %u", y);
+
+	PRESSED(HGEK_D) {
+		player.x += hge->Timer_GetDelta() * 5;
+	}
+	//hge->System_Log("~ key pressed: x = %u", x);
+
+	PRESSED(HGEK_A) {
+		player.x -= hge->Timer_GetDelta() * 5;
+	}
+	//hge->System_Log("~ key pressed: x = %u", x);
+
+	hge->System_Log("* escape pressed. Exiting");
 
 	return false;
 }
