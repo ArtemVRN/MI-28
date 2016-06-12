@@ -2,9 +2,12 @@
 #include "hge_interface.h"
 #include "global.h"
 #include "mapgen.h"
+#include "resources.h"
 
 extern DWORD color;
 extern bool Exit;
+
+void player_init();
 
 bool Initialize() {
 
@@ -14,6 +17,12 @@ bool Initialize() {
 	hge->System_SetState(HGE_WINDOWED, true);
 	hge->System_SetState(HGE_SCREENHEIGHT, 600);
 	hge->System_SetState(HGE_SCREENWIDTH, 800);
+
+#ifdef DEBUG_VERSION
+	hge->System_SetState(HGE_HIDEMOUSE, false);
+#else
+	hge->System_SetState(HGE_HIDEMOUSE, true);
+#endif
 
 	hge->System_Log("~ window made");
 
@@ -34,7 +43,26 @@ bool Initialize() {
 		return true;
 	}
 
+	hge->System_Log("~ loading resources");
+	if (load_res()) {
+		hge->System_Log("!! loading of the resources failed");
+		return true;
+	}
+
+	hge->System_Log("~ initializing player");
+	player_init();
+
 	hge->System_Log("~ initialization finished\n\nGame Cycling...");
 	
 	return false;
+}
+
+
+
+void player_init() {
+	player.x = 50.0f;
+	player.height = 90.0f;
+	player.hp = 100.0f;
+	player.patrons = 10;
+	player.casset = 14;
 }

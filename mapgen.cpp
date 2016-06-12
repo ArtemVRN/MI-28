@@ -37,6 +37,7 @@ bool generate_map()
 			curen->type = (Enemy::Type)(rand() % 4 + 1); // main issue is gen in water
 			curen->x = i;
 			curen = curen->next = new Enemy;
+			enemyCount++;
 		}						/*  Check enemy gen  */
 		else {
 			for (int j = 0; j < 4; j++)
