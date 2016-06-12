@@ -18,6 +18,12 @@ bool Initialize() {
 	hge->System_SetState(HGE_SCREENHEIGHT, 600);
 	hge->System_SetState(HGE_SCREENWIDTH, 800);
 
+#ifdef DEBUG_VERSION
+	hge->System_SetState(HGE_HIDEMOUSE, false);
+#else
+	hge->System_SetState(HGE_HIDEMOUSE, true);
+#endif
+
 	hge->System_Log("~ window made");
 
 	settings = load_settings("settings.txt");

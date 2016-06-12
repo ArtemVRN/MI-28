@@ -23,3 +23,6 @@ extern int* heighmap;	// each mapheight strongly per 40px
 extern Settings* settings; // global settings
 
 extern Resources res;
+
+
+#define DEBUG_VERSION
